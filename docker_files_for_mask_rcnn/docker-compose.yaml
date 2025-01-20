@@ -9,7 +9,7 @@ services:
     runtime: nvidia
     volumes:
       - ../mrcnngit/:/mnt/mrcnngit
-      - ../MASK_RCNN2222:/mnt/MASK_RCNN
+      - ../Mask_RCNN:/mnt/MASK_RCNN
       - ../models:/mnt/models
       - ../deeplearning:/mnt/deeplearning
       - ../preselected_dataset:/mnt/preselected_dataset/
