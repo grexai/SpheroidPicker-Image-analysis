@@ -1,0 +1,59 @@
+{
+    "train_params":
+    {
+:        "train_dir":"/storage01/grexai/datasets/2dspheroidtrain/20190703_Train",
+        "eval_dir":"/storage01/grexai/s1_k/s1_test",
+        "input_model":"/storage01/grexai/dev/MASK_RCNN/additional/mask_rcnn_coco.h5",
+        "blank_mrcnn":"true",
+        "output_model":"../../models/mask_rcnn_k1s1.h5",
+        "epoch_groups":
+        [
+            {
+                "layers":"all",
+                "epochs":"1",
+                "learning_rate":"0.001"
+            },
+            {
+                "layers":"3+",
+                "epochs":"1",
+                "learning_rate":"0.0005"
+            },
+            {
+                "layers":"heads",
+                "epochs":"1",
+                "learning_rate":"0.0001"
+            }
+        ],
+        "comments":"use step_ratio to connect the steps to the number of images or use step_num for a fix value",
+        "step_ratio":"1.0",
+        "show_inputs":"false",
+        "random_augmentation_level":"0",
+        "train_to_val_seed":"0",
+        "train_to_val_ratio":"0.4",
+        "use_eval_in_val":"true",
+        "detection_nms_threshold":"0.35",
+        "rpn_nms_threshold":"0.55",
+        "image_size":"512"
+    },
+
+    "segmentation_params":
+    {
+        "input_dir":"/media/grexai/Data/KAGGLEDATA/20180410/test",
+        "output_dir":"../../outputs/FINAL_premodell/20180411",
+        "model":"/storage01/grexai/dev/MASK_RCNN/additional/mask_rcnn_coco.h5",
+        "separate_masks":"false",
+        "padding":"0.05",
+        "dilation":"2",
+        "cavity_filling":"true",
+        "detection_confidence":"0.5",
+        "default_image_size":"512",
+        "detection_nms_threshold":"0.35",
+        "show":"false"
+    },
+
+    "eval_params":
+    {
+        "result_dir":"../../outputs/prefinal/masks",
+        "gold_dir":"../../AndrasReka/prefinal/test"
+    }
+}

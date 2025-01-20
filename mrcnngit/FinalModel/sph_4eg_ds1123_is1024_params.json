@@ -1,0 +1,64 @@
+{
+    "train_params":
+    {
+        "train_dir":"/storage01/grexai/datasets/202001_train_1920",
+        "eval_dir":"/storage01/grexai/spheroid/test/",
+        "input_model":"/storage01/grexai/dev/MASK_RCNN/additional/mask_rcnn_coco.h5",
+        "blank_mrcnn":"true",
+        "output_model":"../../models/mrcnn_sph_im1024_20200117.h5",
+        "epoch_groups":
+        [
+            {
+                "layers":"all",
+                "epochs":"2",
+                "learning_rate":"0.001"
+            },
+	    {
+		"layers":"5+",
+		"epochs":"3",
+		"learning_rate":"0.00003"
+	    },
+            {
+                "layers":"3+",
+                "epochs":"2",
+                "learning_rate":"0.00002"
+            },
+            {
+                "layers":"heads",
+                "epochs":"3",
+                "learning_rate":"0.000001"
+            }
+        ],
+        "comments":"use step_ratio to connect the steps to the number of images or use step_num for a fix value",
+        "step_ratio":"1.0",
+        "show_inputs":"false",
+        "random_augmentation_level":"0",
+        "train_to_val_seed":"0.05",
+        "train_to_val_ratio":"0.05",
+        "use_eval_in_val":"false",
+        "detection_nms_thrlseshold":"0.35",
+        "rpn_nms_threshold":"0.55",
+        "image_size":"1024"
+    },
+
+    "segmentation_params":
+    {
+        "input_dir":"/storage01/grexai/datasets/2dspheroidtrain/testimages",
+        "output_dir":"../../outputs/190703_sph_def_s/",
+        "model":"../../models/mrcnn_sph_im1024_202001.h5",
+        "separate_masks":"false",
+        "padding":"0.05",
+        "dilation":"1",
+        "cavity_filling":"false",
+        "detection_confidence":"0.9",
+        "default_image_size":"1024",
+        "detection_nms_threshold":"0.35",
+        "show":"false"
+    },
+
+    "eval_params":
+    {
+        "result_dir":"../../outputs/sph827/20190430",
+        "gold_dir":"/storage01/grexai/spheroid/test"
+    }
+}

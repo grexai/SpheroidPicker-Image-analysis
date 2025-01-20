@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  cuda-container:
+    image: cuda-ubuntu18-cuda9
+    build:
+      context: .
+    container_name: matterport_mrcnn_container   # Added container name here
+    runtime: nvidia
+    volumes:
+      - ../mrcnngit/:/mnt/mrcnngit
+      - ../MASK_RCNN2222:/mnt/MASK_RCNN
+      - ../models:/mnt/models
+      - ../deeplearning:/mnt/deeplearning
+      - ../preselected_dataset:/mnt/preselected_dataset/
+      - ../RESULTS/:/mnt/RESULTS/
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    stdin_open: true
+    tty: true
