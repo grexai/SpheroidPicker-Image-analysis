@@ -21,6 +21,32 @@ volumes:
   - ../preselected_dataset:/mnt/preselected_dataset/
 ```
 
+## Update Paths in Configuration Files
+
+Update the paths in the JSON configuration file to match your local setup. Below is an example configuration snippet:
+
+```json
+"train_params": {
+    "train_dir": "/path/to/your/train/dataset/",
+    "eval_dir": "/path/to/your/validation/dataset/",
+    "input_model": "/path/to/your/pretrained/model/mask_rcnn_coco.h5",
+    "output_model": "/path/to/your/output/model.h5",
+    ...
+},
+"segmentation_params": {
+    "input_dir": "/path/to/your/test/dataset/",
+    "output_dir": "/path/to/your/results/directory/",
+    "model": "/path/to/your/trained/model.h5",
+    ...
+},
+"eval_params": {
+    "result_dir": "/path/to/your/results/directory/",
+    "gold_dir": "/path/to/your/test/gold/standard/dataset/"
+}
+```
+
+Ensure that all specified directories exist and are accessible.
+
 ## Installation
 
 ### Prerequisites
@@ -69,11 +95,17 @@ The container name is `matterport_mrcnn_container`.
      ./g_s_run.sh <configuration_file.json>
      ```
 
-
 Replace `<configuration_file.json>` with the path to your specific configuration file.
+
+### Results
+
+Training and segmentation results will be saved to the output directories specified in the configuration file. For example:
+- Training output model: `/path/to/your/output/model.h5`
+- Segmentation results: `/path/to/your/results/directory/`
 
 ## Notes
 
 - Ensure that all dataset paths are correctly specified in the configuration files before running any scripts.
 - For optimal performance, use a system with an NVIDIA GPU and the appropriate drivers installed.
+- Refer to the Mask R-CNN documentation for additional customization options and advanced usage.
 
